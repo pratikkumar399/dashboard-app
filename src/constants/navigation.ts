@@ -1,6 +1,4 @@
 import { 
-  ChevronDown, 
-  ChevronRight, 
   User, 
   Settings, 
   Users, 
@@ -8,7 +6,6 @@ import {
   MessageCircle,
   ShoppingCart,
   PieChart, 
-  Mail, 
   Folder, 
   BookOpen,
   ShoppingBag

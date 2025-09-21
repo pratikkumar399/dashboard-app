@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from 'react';
-import { orders as ordersData, type Order } from '@/constants/orders';
+import { orders as ordersData } from '@/constants/orders';
 
 export const OrderList = () => {
   const [searchTerm, setSearchTerm] = useState('');
