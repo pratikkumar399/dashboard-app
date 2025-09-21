@@ -138,11 +138,6 @@
       -webkit-tap-highlight-color: transparent;
     }
     
-    /* Ensure sidebars are hidden by default on mobile */
-    [data-sidebar="sidebar"][data-mobile="true"] {
-      transform: translateX(-100%);
-    }
-    
     /* Ensure right sidebar is hidden by default on mobile */
     .mobile-right-sidebar {
       transform: translateX(100%);
