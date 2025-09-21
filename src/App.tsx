@@ -9,16 +9,27 @@ import {
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { DashboardPage } from "./pages/DashboardPage"
 import { OrdersPage } from "./pages/OrdersPage"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 function App() {
-  const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(true)
+  const isMobile = useIsMobile()
+  const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(false) // Start closed by default
+  const [isLeftSidebarOpen, setIsLeftSidebarOpen] = useState(!isMobile) // Open on desktop, closed on mobile
+
+  // Update left sidebar state when mobile state changes
+  useEffect(() => {
+    setIsLeftSidebarOpen(!isMobile)
+  }, [isMobile])
 
   return (
     <ThemeProvider defaultTheme="system" storageKey="dashboard-theme">
       <Router>
         <div className="h-screen flex flex-col">
-          <SidebarProvider defaultOpen={true}>
+          <SidebarProvider 
+            open={isLeftSidebarOpen} 
+            onOpenChange={setIsLeftSidebarOpen}
+          >
             <div className="flex flex-1 min-h-0">
               <AppSidebar />
               <div className="flex flex-1 min-h-0">

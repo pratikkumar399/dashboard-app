@@ -23,7 +23,7 @@ export function AppHeader({ onToggleRightSidebar }: AppHeaderProps) {
     <header className="flex h-16 shrink-0 items-center gap-2 border-b bg-background px-4">
       {/* Team Selector */}
       <div className="flex items-center gap-2">
-        <SidebarTrigger className="-ml-1" />
+        <SidebarTrigger className="-ml-1 relative z-10" />
       </div>
 
       {/* Navigation Breadcrumbs */}

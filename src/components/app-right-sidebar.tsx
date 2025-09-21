@@ -23,6 +23,9 @@ interface AppRightSidebarProps {
 
 export function AppRightSidebar({ open = false, onClose }: AppRightSidebarProps) {
   const isMobile = useIsMobile()
+  
+  // On mobile, ensure sidebar starts closed unless explicitly opened
+  const shouldBeOpen = isMobile ? open : open
 
   const sidebarContent = (
     <div className="flex h-full flex-col">
@@ -57,7 +60,7 @@ export function AppRightSidebar({ open = false, onClose }: AppRightSidebarProps)
 
   if (isMobile) {
     return (
-      <Sheet open={open} onOpenChange={onClose}>
+      <Sheet open={shouldBeOpen} onOpenChange={onClose}>
         <SheetContent
           side="right"
           className="bg-sidebar text-sidebar-foreground w-80 p-0 [&>button]:hidden"
@@ -76,12 +79,12 @@ export function AppRightSidebar({ open = false, onClose }: AppRightSidebarProps)
     <div
       className={cn(
         "bg-sidebar text-sidebar-foreground flex h-full flex-col border-l border-sidebar-border transition-all duration-300 ease-in-out",
-        open ? "w-80 opacity-100" : "w-0 opacity-0 overflow-hidden"
+        shouldBeOpen ? "w-80 opacity-100" : "w-0 opacity-0 overflow-hidden"
       )}
     >
       <div className={cn(
         "flex h-full flex-col transition-opacity duration-200",
-        open ? "opacity-100" : "opacity-0"
+        shouldBeOpen ? "opacity-100" : "opacity-0"
       )}>
         {sidebarContent}
       </div>
